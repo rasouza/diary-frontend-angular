@@ -1,0 +1,57 @@
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                    <h4 class="title">Tell about your day!</h4>
+                    
+                    <p class="category">{{ today | date: 'dd/MM/yyyy' }}</p>
+                </div>
+                <div class="card-content">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Today's progress</label>
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="customDateCB">Custom date?
+                                    </label>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Thoughts</label>
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <label class="control-label">
+                                            What happened wrong? 
+                                            In which way you could do better tomorrow? 
+                                            How was your mood at the end of the day?
+                                        </label>
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger pull-right">Write</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
