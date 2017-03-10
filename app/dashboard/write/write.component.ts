@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class WriteComponent implements OnInit {
-    today: Date = new Date();
+    date: Date = new Date();
+    isOpen = false;
+
     ngOnInit(){ }
+
+    openDatepicker() {
+        this.isOpen = true;
+        setTimeout(() => {
+            this.isOpen = false;
+        }, 1000);
+    }
 }

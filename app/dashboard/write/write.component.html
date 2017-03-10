@@ -21,11 +21,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="customDateCB">Custom date?
-                                    </label>
-                                </div>
+                                <button class="btn" (click)="openDatepicker()">Custom date</button>
+                                <md2-datepicker [(ngModel)]="date" [isOpen]="isOpen" [hidden]="true" name="date"></md2-datepicker>
                             
                             </div>
                         </div>
