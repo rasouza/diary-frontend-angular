@@ -12,24 +12,14 @@
                             <h2>Timeline</h2>
                         </div>-->
                         <div class="row">
-                            <div class="tim-typo">
-                                <h2>DAY 1</h2>
+                            <div class="tim-typo" *ngFor="let story of stories; let i=index">
+                                <h2>DAY {{ i + 1 }}</h2>
                                 <p>
-                                    <span class="tim-note">March 6th, 2017</span>
-                                    
-                                    <strong>Today's progress:</strong> I worked a little bit with HTML template in Angular
-                                </p><p>
-                                    <strong>What I thought:</strong> I spent too much time choosing a frontend technology and a template to work with
+                                    <span class="tim-note">{{ story.date | date:'mediumDate' }}</span>
+                                    <strong>Today's progress:</strong> {{ story.title }}
                                 </p>
-                            </div>
-                            <div class="tim-typo">
-                                <h2>DAY 2</h2>
                                 <p>
-                                    <span class="tim-note">March 7th, 2017</span>
-                                    
-                                    <strong>Today's progress:</strong> I worked a little bit with HTML template in Angular
-                                </p><p>
-                                    <strong>What I thought:</strong> I spent too much time choosing a frontend technology and a template to work with
+                                    <strong>What I thought:</strong> {{ story.text }}
                                 </p>
                             </div>
                         </div>
