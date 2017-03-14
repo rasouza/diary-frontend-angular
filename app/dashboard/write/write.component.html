@@ -9,20 +9,21 @@
                     <p class="category">{{ today | date: 'dd/MM/yyyy' }}</p>
                 </div>
                 <div class="card-content">
-                    <form>
+                    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Today's progress</label>
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" [(ngModel)]="story.title" name="title">
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 
-                                <button class="btn" (click)="openDatepicker()">Custom date</button>
-                                <md2-datepicker [(ngModel)]="date" [isOpen]="isOpen" [hidden]="true" name="date"></md2-datepicker>
+                                <button type="button" class="btn" (click)="openDatepicker()">Custom date</button>
+                                <md2-datepicker [(ngModel)]="story.date" [isOpen]="isOpen" [hidden]="true" name="date"></md2-datepicker>
                             
                             </div>
                         </div>
@@ -37,7 +38,7 @@
                                             In which way you could do better tomorrow? 
                                             How was your mood at the end of the day?
                                         </label>
-                                        <textarea class="form-control" rows="5"></textarea>
+                                        <textarea class="form-control" rows="5" [(ngModel)]="story.text" name="text"></textarea>
                                     </div>
                                 </div>
                             </div>
