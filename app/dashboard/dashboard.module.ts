@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './dashboard.routes';
 
 import { Md2Module }  from 'md2';
+import { MaterialModule } from '@angular/material';
+
 
 @NgModule({
     imports: [
@@ -14,6 +17,7 @@ import { Md2Module }  from 'md2';
         FormsModule,
         HttpModule,
         Md2Module.forRoot(),
+        MaterialModule
     ],
     declarations: [ MODULE_COMPONENTS ]
 })
