@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Story } from '../../classes/story';
 import { StoryService } from '../../services/story.service';
 
+declare var $:any;
+
 @Component({
     selector: 'write-cmp',
     moduleId: module.id,
@@ -17,7 +19,13 @@ export class WriteComponent implements OnInit {
     ngOnInit(){ }
     constructor(private storyService: StoryService) {}
 
-    onSubmit() { this.storyService.write(this.story); }
+    onSubmit() {
+        $.notify({
+            title: 'Story',
+            message: JSON.stringify(this.story)
+        });
+        // this.storyService.write(this.story);
+    }
 
     openDatepicker() {
         this.isOpen = true;
