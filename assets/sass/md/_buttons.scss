@@ -23,7 +23,9 @@
     &.btn-default{
         @include btn-styles($gray-light);
     }
-
+    &.btn-theme{
+        @include btn-styles($cyan-dark);
+    }
     &.btn-primary{
       @include btn-styles($brand-primary);
     }

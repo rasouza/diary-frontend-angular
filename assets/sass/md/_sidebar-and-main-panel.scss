@@ -235,6 +235,9 @@
     &[data-color="blue"]{
         @include set-background-color-button($brand-info);
     }
+    &[data-color="water-leaf"]{
+        @include set-background-color-button($cyan-dark);
+    }
     &[data-color="green"]{
         @include set-background-color-button($brand-success);
     }
