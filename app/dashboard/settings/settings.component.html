@@ -7,18 +7,17 @@
                     <h4 class="title">Integrations</h4>
                     <p class="category">Choose which repositories to keep track</p>
                 </div>
-                <div class="card-content">
+                <div class="card-content table-responsive">
                     <form>
-                        <div class="row" *ngFor="let repo of repos">
-                            <div class="col-md-6">
-                                <md-slide-toggle>
-                                    {{ repo.name }}
-                                </md-slide-toggle>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-theme pull-right">Save</button>
-                        <div class="clearfix"></div>
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let repo of repos">
+                                    <td><md-slide-toggle></md-slide-toggle></td>
+                                    <td><strong>{{ repo.name }}</strong></td>
+                                    <td>{{ repo.description }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </form>
                 </div>
             </div>
@@ -30,6 +29,25 @@
                         <img class="img" src="../assets/img/faces/profile.jpg" />
                     </a>
                 </div>
+
+                <div class="content">
+                    <h6 class="category text-gray">Web Developer</h6>
+                    <h4 class="card-title">Rodrigo Souza</h4>
+                    <p class="card-content">
+                        Quem se define se limita
+                    </p>
+                    <a href="#pablo" class="btn btn-theme btn-round">Follow</a>
+                </div>
+            </div>
+
+             <div class="card card-profile" style="margin-top: 70px">
+                <div class="card-avatar">
+                    <a href="#pablo">
+                        <img class="img" src="../assets/img/faces/profile.jpg" />
+                    </a>
+                </div>
+
+                <div class="row"></div>
 
                 <div class="content">
                     <h6 class="category text-gray">Web Developer</h6>

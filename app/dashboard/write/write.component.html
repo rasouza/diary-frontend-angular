@@ -4,46 +4,43 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header" data-background-color="water-leaf">
-                    <h4 class="title">Tell about your day!</h4>
+                    <h4 class="title">How exciting was your day?!</h4>
                     
                     <p class="category">{{ today | date: 'dd/MM/yyyy' }}</p>
                 </div>
                 <div class="card-content">
                     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Today's progress</label>
                                     <input type="text" class="form-control" [(ngModel)]="story.title" name="title">
                                     
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                
-                                <button type="button" class="btn" (click)="openDatepicker()">Custom date</button>
-                                <md2-datepicker [(ngModel)]="story.date" [isOpen]="isOpen" [hidden]="true" name="date"></md2-datepicker>
-                            
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <md2-datepicker 
+                                        [(ngModel)]="story.date"
+                                        [isOpen]="isOpen" 
+                                        [hidden]="false" 
+                                        name="date" 
+                                        class="pull-right">
+                                    </md2-datepicker> 
+                                </div>                               
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Thoughts</label>
-                                    <div class="form-group form-black label-floating is-empty">
-                                        <label class="control-label">
-                                            What happened wrong? 
-                                            In which way you could do better tomorrow? 
-                                            How was your mood at the end of the day?
-                                        </label>
-                                        <textarea class="form-control" rows="5" [(ngModel)]="story.description" name="text"></textarea>
-                                    </div>
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Thoughts</label>
+                                    <textarea class="form-control" rows="5" [(ngModel)]="story.description" name="text"></textarea>
                                 </div>
                             </div>
                         </div>
 
+                        <!--<button type="button" class="btn" (click)="openDatepicker()">Custom date</button>-->
                         <button type="submit" class="btn btn-theme pull-right">Write</button>
                         <div class="clearfix"></div>
                     </form>
