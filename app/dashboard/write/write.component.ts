@@ -4,6 +4,7 @@ import { Story } from '../../classes/story';
 import { StoryService } from '../../services/story.service';
 
 declare var $:any;
+declare var moment:any;
 
 @Component({
     selector: 'write-cmp',
@@ -16,15 +17,18 @@ export class WriteComponent implements OnInit {
     story: Story = new Story();
     isOpen = false;
 
-    ngOnInit(){ }
+    ngOnInit(){
+     }
     constructor(private storyService: StoryService) {}
 
     onSubmit() {
         this.storyService.write(this.story)
             .then(story => {
                 $.notify({
-                    title: 'Story',
-                    message: JSON.stringify(this.story)
+                    // title: 'Story',
+                    message: `Your story from <strong>${moment(story.date).format('L')}</strong> was successfully written to your diary!`
+                }, {
+                    type: 'success'
                 });
             });
     }

@@ -15,7 +15,7 @@ export class StoryService {
 
     write(story: Story): Promise<Story> {
         return this.http.post(`${this.url}/stories`, JSON.stringify(story), { headers: this.headers }).toPromise()
-            .then(res => res.json().data)
+            .then(res => res.json())
             .catch(this.handleError);
     }
 
