@@ -2,7 +2,7 @@ export class Story {
     id: number;
     title: string;
     date: Date;
-    text: string;
+    description: string;
 
     constructor() {
         this.date = new Date();
