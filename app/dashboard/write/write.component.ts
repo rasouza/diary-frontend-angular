@@ -20,11 +20,13 @@ export class WriteComponent implements OnInit {
     constructor(private storyService: StoryService) {}
 
     onSubmit() {
-        $.notify({
-            title: 'Story',
-            message: JSON.stringify(this.story)
-        });
-        // this.storyService.write(this.story);
+        this.storyService.write(this.story)
+            .then(story => {
+                $.notify({
+                    title: 'Story',
+                    message: JSON.stringify(this.story)
+                });
+            });
     }
 
     openDatepicker() {
