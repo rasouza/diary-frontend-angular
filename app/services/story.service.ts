@@ -8,7 +8,7 @@ import { STORIES } from './story.mock';
 @Injectable()
 
 export class StoryService {
-    private url = 'http://site.rasouza.com.br/api';
+    private url = 'http://diary-api.dev/api';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}

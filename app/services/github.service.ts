@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 
 export class GithubService {
-    base: string = 'https://api.github.com';
+    private base: string = 'https://api.github.com';
+
     constructor(private http: Http) {}
 
-    getRepos(user: string): Promise<any> {
-        return this.http.get(`${this.base}/users/${user}/repos`).toPromise()
+    getRepos(): Promise<any> {
+        const headers = new Headers({'Authorization': `token ${sessionStorage.getItem('token')}`});
+        return this.http.get(`${this.base}/user/repos`, { headers: headers }).toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
+
+    getUser(): Promise<any> {
+        const headers = new Headers({'Authorization': `token ${sessionStorage.getItem('token')}`});
+        return this.http.get(`${this.base}/user`, { headers: headers }).toPromise()
             .then(res => res.json())
             .catch(this.handleError);
     }

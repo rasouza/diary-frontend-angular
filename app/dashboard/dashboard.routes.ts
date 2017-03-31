@@ -17,5 +17,5 @@ export const MODULE_COMPONENTS = [
     HomeComponent,
     TimelineComponent,
     WriteComponent,
-    SettingsComponent,
+    SettingsComponent
 ]
