@@ -1,14 +1,15 @@
 <div class="main-content">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" *ngIf="logged">
             <div class="card">
                 <div class="card-header" data-background-color="water-leaf">
                     <h4 class="title">Integrations</h4>
                     <p class="category">Choose which repositories to keep track</p>
                 </div>
                 <div class="card-content table-responsive">
-                    <form>
+                    <p *ngIf="!logged">Connect your account with Github to list your repositories</p>
+                    <form *ngIf="logged">
                         <table class="table">
                             <tbody>
                                 <tr *ngFor="let repo of repos">
@@ -22,40 +23,36 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" [class.center-block]="!logged">
             <div class="card card-profile">
                 <div class="card-avatar">
-                    <a href="#pablo">
-                        <img class="img" src="../assets/img/faces/profile.jpg" />
-                    </a>
+                    <img class="img" [attr.src]="logged? user?.avatar_url : '../assets/img/github-icon.png'" />
                 </div>
 
                 <div class="content">
-                    <h6 class="category text-gray">Web Developer</h6>
-                    <h4 class="card-title">Rodrigo Souza</h4>
+                    <h6 class="category text-gray">{{ logged? user?.login : 'Integration' }}</h6>
+                    <h4 class="card-title">{{ logged? user?.name : 'Github' }}</h4>
                     <p class="card-content">
-                        Quem se define se limita
+                        {{ logged? user?.bio : 'Connect with your Github profile to track your stories with your repositories' }}
                     </p>
-                    <a href="#pablo" class="btn btn-theme btn-round">Follow</a>
+                    <a *ngIf="!logged" href="https://github.com/login/oauth/authorize?client_id=29e23ecfc4eec0814fc0" class="btn btn-round">Connect</a>
                 </div>
             </div>
 
              <div class="card card-profile" style="margin-top: 70px">
                 <div class="card-avatar">
-                    <a href="#pablo">
-                        <img class="img" src="../assets/img/faces/profile.jpg" />
-                    </a>
+                    <img class="img" src="../assets/img/twitter-icon.jpg" />
                 </div>
 
                 <div class="row"></div>
 
                 <div class="content">
-                    <h6 class="category text-gray">Web Developer</h6>
-                    <h4 class="card-title">Rodrigo Souza</h4>
+                    <h6 class="category text-gray">Integration</h6>
+                    <h4 class="card-title">Twitter</h4>
                     <p class="card-content">
-                        Quem se define se limita
+                        Connect with your Twitter account to tweet your stories automatically
                     </p>
-                    <a href="#pablo" class="btn btn-theme btn-round">Follow</a>
+                    <a href="#pablo" class="btn btn-blue btn-round">Connect</a>
                 </div>
             </div>
         </div>
