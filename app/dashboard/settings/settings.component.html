@@ -35,24 +35,24 @@
                     <p class="card-content">
                         {{ logged? user?.bio : 'Connect with your Github profile to track your stories with your repositories' }}
                     </p>
-                    <a *ngIf="!logged" href="https://github.com/login/oauth/authorize?client_id=29e23ecfc4eec0814fc0&redirect_uri={{ redirect_uri }}" class="btn btn-round">Connect</a>
+                    <a *ngIf="!logged" href="https://github.com/login/oauth/authorize?client_id=29e23ecfc4eec0814fc0" class="btn btn-round">Connect</a>
                 </div>
             </div>
 
              <div class="card card-profile" style="margin-top: 70px">
                 <div class="card-avatar">
-                    <img class="img" src="../assets/img/twitter-icon.jpg" />
+                    <img class="img" [attr.src]="twitter_logged? twitter_user?.profile_image_url : '../assets/img/twitter-icon.jpg'" />
                 </div>
 
                 <div class="row"></div>
 
                 <div class="content">
-                    <h6 class="category text-gray">Integration</h6>
-                    <h4 class="card-title">Twitter</h4>
+                    <h6 class="category text-gray">{{ twitter_logged? twitter_user?.screen_name : 'Integration' }}</h6>
+                    <h4 class="card-title">{{ twitter_logged? twitter_user?.name : 'Twitter' }}</h4>
                     <p class="card-content">
-                        Connect with your Twitter account to tweet your stories automatically
+                        {{ twitter_logged? twitter_user?.description : 'Connect with your Twitter account to tweet your stories automatically' }}
                     </p>
-                    <a href="#pablo" class="btn btn-blue btn-round">Connect</a>
+                    <a *ngIf="!twitter_logged" href="http://diary-api.dev/oauth/twitter" class="btn btn-blue btn-round">Connect</a>
                 </div>
             </div>
         </div>
