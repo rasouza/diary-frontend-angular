@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import { env } from "../env/env.js";
 import { Story } from '../classes/story';
 import { STORIES } from './story.mock';
  
 @Injectable()
 
 export class StoryService {
-    private url = 'http://diary-api.dev/api';
+    private url = env[env.mode].api_url;
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}
@@ -20,6 +21,7 @@ export class StoryService {
     }
 
     getStories(): Promise<Story[]> {
+        console.log(env[env.mode]);
         return this.http.get(`${this.url}/stories`).toPromise()
             .then(stories => stories.json())
             .catch(this.handleError);

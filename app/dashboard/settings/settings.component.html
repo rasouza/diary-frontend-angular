@@ -35,7 +35,7 @@
                     <p class="card-content">
                         {{ logged? user?.bio : 'Connect with your Github profile to track your stories with your repositories' }}
                     </p>
-                    <a *ngIf="!logged" href="https://github.com/login/oauth/authorize?client_id=29e23ecfc4eec0814fc0" class="btn btn-round">Connect</a>
+                    <a *ngIf="!logged" href="https://github.com/login/oauth/authorize?client_id=29e23ecfc4eec0814fc0&redirect_uri={{ redirect_uri }}" class="btn btn-round">Connect</a>
                 </div>
             </div>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { GithubService } from '../../services/github.service';
+import { env } from "../../env/env.js";
 
 @Component({
     selector: 'settings-cmp',
@@ -15,6 +16,7 @@ export class SettingsComponent implements OnInit{
     repos;
     user;
     logged;
+    redirect_uri = env[env.mode].github_callback;
 
     constructor(private githubService: GithubService, private route: ActivatedRoute) {}
     ngOnInit() {
