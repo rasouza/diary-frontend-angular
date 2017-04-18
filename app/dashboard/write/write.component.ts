@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Story } from '../../classes/story';
 import { StoryService } from '../../services/story.service';
+import { TwitterService } from '../../services/twitter.service';
 
 declare var $:any;
 declare var moment:any;
@@ -10,16 +11,19 @@ declare var moment:any;
     selector: 'write-cmp',
     moduleId: module.id,
     templateUrl: 'write.component.html',
-    providers: [StoryService]
+    providers: [StoryService, TwitterService]
 })
 
 export class WriteComponent implements OnInit {
     story: Story = new Story();
     isOpen = false;
+    tweet = false;
 
-    ngOnInit(){
-     }
-    constructor(private storyService: StoryService) {}
+    ngOnInit() {
+        if(sessionStorage.getItem('twitter_token') !== null)
+            this.tweet = true;
+    }
+    constructor(private storyService: StoryService, private twitterService: TwitterService) {}
 
     onSubmit() {
         this.storyService.write(this.story)
@@ -31,6 +35,16 @@ export class WriteComponent implements OnInit {
                     type: 'success'
                 });
             });
+        if (this.tweet)
+            this.twitterService.tweet(this.story.title)
+                .then(() => {
+                    $.notify({
+                        // title: 'Story',
+                        message: `You just tweeted about your day`
+                    }, {
+                        type: 'success'
+                    });
+                });
     }
 
     openDatepicker() {

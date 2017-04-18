@@ -26,6 +26,17 @@ export class TwitterService {
             .catch(this.handleError);
     }
 
+    tweet(title: string): Promise<any> {
+        const data = {
+            'token': sessionStorage.getItem('twitter_token'),
+            'token_secret': sessionStorage.getItem('twitter_token_secret'),
+            'tweet': `${title} #100DaysOfCode`
+        }
+        return this.http.post(`${this.base}/api/twitter/status`, JSON.stringify(data), { headers: this.headers }).toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
