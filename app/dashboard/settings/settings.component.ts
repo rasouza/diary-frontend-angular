@@ -15,11 +15,11 @@ import { env } from "../../env/env.js";
 
 export class SettingsComponent implements OnInit{
     repos;
+    storedRepos;
     user;
     logged;
     twitter_logged;
     twitter_user;
-    redirect_uri = env[env.mode].github_callback;
 
     constructor(
         private githubService: GithubService,
@@ -50,12 +50,19 @@ export class SettingsComponent implements OnInit{
 
     handleGithub(): void {
         this.logged = sessionStorage.getItem('token');
-        this.githubService.getUser().then(user => this.user = user);
+        this.githubService.getUser()
+            .then(user => this.user = user)
+            .then(() => this.githubService.getStoredRepos(this.user.login))
+            .then(repos => this.storedRepos = repos);
         this.githubService.getRepos().then(repos => this.repos = repos);
     }
 
     handleTwitter(): void {
         this.twitter_logged = true;
         this.twitterService.getUser().then(user => this.twitter_user = user);
+    }
+
+    toggleRepo(repo) {
+        this.githubService.saveRepo(repo.name);
     }
 }

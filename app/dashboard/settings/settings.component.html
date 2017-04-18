@@ -13,7 +13,7 @@
                         <table class="table">
                             <tbody>
                                 <tr *ngFor="let repo of repos">
-                                    <td><md-slide-toggle></md-slide-toggle></td>
+                                    <td><md-slide-toggle (change)="toggleRepo(repo)" [checked]="storedRepos.indexOf(repo) != -1"></md-slide-toggle></td>
                                     <td><strong>{{ repo.name }}</strong></td>
                                     <td>{{ repo.description }}</td>
                                 </tr>
